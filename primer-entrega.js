@@ -29,12 +29,12 @@ class ProductManager{
 class Product{
     constructor(title, description, price, thumbnail, code, stock, id = this.generarId() ) {
         this.id = id,
-        this.title = title,
-        this.description = description,
-        this.price = price,
-        this.thumbnail = thumbnail,
-        this.code = code,
-        this.stock = stock
+        this.title = title || "sin valor",
+        this.description = description || "sin valor",
+        this.price = price || 0,
+        this.thumbnail = thumbnail || "sin valor",
+        this.code = code || "sin valor",
+        this.stock = stock || 0
     }
     // Metodo para generar ID alfanumerico unico, copiado de internet.
     generarId (){
@@ -57,13 +57,13 @@ const manejadorEventos = new ProductManager;
 console.log( manejadorEventos.getProduct());
 
 // Agrego un poducto al no existir se agrega con exito
-manejadorEventos.addProduct(new Product("producto prueba", "Esto es un producto de prueba", 200, "Sin Imagen", "abc123", 25))
+manejadorEventos.addProduct(new Product("Producto prueba", "Esto es un producto de prueba", 200, "Sin Imagen", "abc123", 25))
 
 // Muestro todos los productos
 console.log(manejadorEventos.getProduct());
 
 // Agrego el mismo producto el cual es rechazado por existir en la BD
-manejadorEventos.addProduct(new Product("producto prueba", "Esto es un producto de prueba", 200, "Sin Imagen", "abc123", 25))
+manejadorEventos.addProduct(new Product("Producto prueba", "Esto es un producto de prueba", 200, "Sin Imagen", "abc123", 25))
 
 // Otengo un id existente para poder consultarlo
 const productoAgregado = manejadorEventos.getProduct()
